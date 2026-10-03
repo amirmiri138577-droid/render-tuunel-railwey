@@ -42,7 +42,7 @@ if [ -n "${PORT:-}" ] && [ "$PORT" != "$SERVICE_PORT" ]; then
   HEALTH_DIR=/tmp/pasarguard-health
   mkdir -p "$HEALTH_DIR"
   printf 'ok\n' > "$HEALTH_DIR/health"
-  busybox httpd -f -p "0.0.0.0:${PORT}" -h "$HEALTH_DIR" >/dev/null 2>&1 &
+  busybox httpd -f -p "${PORT}" -h "$HEALTH_DIR" >/dev/null 2>&1 &
   HEALTH_PID=$!
   echo "[pasarguard-node] Render health server listening on 0.0.0.0:${PORT}"
 fi
