@@ -38,3 +38,4 @@ services:
         value: /var/lib/pg-node/certs/ssl_key.pem
       - key: GENERATED_CONFIG_PATH
         value: /var/lib/pg-node/generated
+        
