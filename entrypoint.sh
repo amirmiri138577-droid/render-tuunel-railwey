@@ -24,7 +24,7 @@ SETUP_PRINTED_FILE=${SETUP_PRINTED_FILE:-$DATA_DIR/.connection-info-printed}
 # An explicitly configured port always wins. Railway's PORT is used as a
 # fallback so a newly-created Railway service can start without hand editing.
 if [ -z "${SERVICE_PORT:-}" ]; then
-  SERVICE_PORT=${PORT:-62050}
+  SERVICE_PORT=62050
 fi
 export SERVICE_PORT
 export NODE_HOST=${NODE_HOST:-0.0.0.0}
