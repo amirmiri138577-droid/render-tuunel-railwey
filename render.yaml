@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: pasarguard-node
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_HOST
+        value: 0.0.0.0
+      - key: SERVICE_PORT
+        value: "62050"
+      - key: SERVICE_PROTOCOL
+        value: grpc
+      - key: TUNNEL_ENABLED
+        value: "true"
+      - key: RATHOLE_USER_PORT
+        value: "8443"
+      - key: NODE_PUBLIC_HOST
+        sync: false
+      - key: API_KEY
+        sync: false
+      - key: RATHOLE_SERVER_ADDR
+        sync: false
+      - key: RATHOLE_TOKEN
+        sync: false
+      - key: PRINT_CONNECTION_INFO
+        value: "true"
+      - key: AUTO_GENERATE_CERT
+        value: "true"
+      - key: REGENERATE_CERT_ON_HOST_CHANGE
+        value: "true"
+      - key: SSL_CERT_FILE
+        value: /var/lib/pg-node/certs/ssl_cert.pem
+      - key: SSL_KEY_FILE
+        value: /var/lib/pg-node/certs/ssl_key.pem
+      - key: GENERATED_CONFIG_PATH
+        value: /var/lib/pg-node/generated
