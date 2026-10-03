@@ -14,7 +14,9 @@ RUN apk add --no-cache musl-dev build-base curl tar gzip \
 
 FROM ${PASARGUARD_NODE_IMAGE}
 USER root
-RUN apk add --no-cache openssl
+# Render Web Services need a real HTTP listener on the injected PORT.
+# Install BusyBox explicitly instead of relying on the base image contents.
+RUN apk add --no-cache openssl busybox
 
 COPY --from=rathole-build /rathole /usr/local/bin/rathole
 COPY entrypoint.sh /entrypoint.sh
